@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        String name = "" , email = ""  , loopChoice = "";
+        String name = "" , email = "" ;
         int id = 0 , age = 0 ;
         boolean again = true;
         Scanner kb = new Scanner(System.in);
@@ -20,11 +20,11 @@ public class Main {
                     "\n 1: Make a new entry to the database." +
                     "\n 2: Update an entry name." +
                     "\n 3: Remove an entry." +
-                    "\n 4: Retrive all information on an entry." +
+                    "\n 4: Retrieve all information on an entry." +
                     "\n 5: EXIT");
-            loopChoice = kb.next();
 
-            switch (loopChoice){
+            switch (kb.next()){
+
                 case  "1" :
                     System.out.println("Enter Name :");
                     name = kb.next();
@@ -37,19 +37,27 @@ public class Main {
                     break;
 
                 case  "2" :
-                    System.out.println("Case 2");
+                    System.out.println("Name the entry ID you wish to update :");
+                    id = kb.nextInt();
+                    System.out.println("Enter the new name :");
+                    name = kb.next();
+                    System.out.println("Enter the new age :");
+                    age = kb.nextInt();
+                    System.out.println("Enter the new email address :");
+                    email = kb.next();
+                    studentDAO.updateStudentName(id , name , age , email);
                     break;
 
                 case  "3" :
-                    System.out.println("Case 3");
+                    //Remove
                     break;
 
                 case  "4" :
-                    System.out.println("Case 4");
+
                     break;
 
                 case  "5" :
-                    //i++;
+                    //Info
                     again = false;
                     break;
 
