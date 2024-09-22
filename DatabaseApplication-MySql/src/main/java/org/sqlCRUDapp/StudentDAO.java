@@ -45,15 +45,17 @@ public class StudentDAO {
         }
     }
 
-    public void updateStudentName(String name) throws SQLException {
+    public void updateStudentName(int id , String name ,int age ,  String email){
 
-        String sql = "UPDATE students SET name = ? WHERE name = ?";
+        String sql = "UPDATE students SET name = ? , age = ? , email = ? WHERE id = ?";
 
         try (Connection conn = DatabaseConnection.getConnection();
         PreparedStatement pstmt = conn.prepareStatement(sql)){
 
             pstmt.setString(1 , name);
-            //pstmt.setInt(2 , id);
+            pstmt.setInt(2 , age);
+            pstmt.setString(3  , email);
+            pstmt.setInt(4 , id);
 
             pstmt.executeUpdate();
         }catch (SQLException e) {
